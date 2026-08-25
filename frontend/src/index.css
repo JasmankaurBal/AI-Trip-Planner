@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  background-color: #f9f7f3;
+  color: #1a1c19;
+  font-family: "DM Sans", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Manrope", system-ui, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+::selection {
+  background: #2c5530;
+  color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #d9d4c8; border-radius: 999px; border: 2px solid #f9f7f3; }
+::-webkit-scrollbar-thumb:hover { background: #c4bdae; }
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-canvas;
+  }
+  .btn-primary { @apply btn bg-brand text-white hover:bg-brand-hover px-5 py-2.5; }
+  .btn-secondary { @apply btn border border-border bg-surface text-ink hover:bg-muted px-5 py-2.5; }
+  .btn-ghost { @apply btn text-ink-soft hover:text-ink hover:bg-muted px-3 py-2; }
+  .btn-danger { @apply btn bg-danger text-white hover:opacity-90 px-5 py-2.5; }
+  .card { @apply bg-surface border border-border rounded-2xl shadow-card; }
+  .field {
+    @apply w-full rounded-xl border border-border bg-surface px-3.5 py-2.5 text-ink placeholder:text-ink-faint focus:border-brand focus:ring-2 focus:ring-brand/20 transition-colors;
+  }
+  .label { @apply block text-sm font-semibold text-ink mb-1.5; }
+  .chip { @apply inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1 text-sm font-medium text-ink-soft; }
+  .chip-active { @apply border-brand bg-brand-soft text-brand; }
+}
+
+/* Leaflet marker fix + custom pins */
+.leaflet-container { font-family: "DM Sans", sans-serif; z-index: 0; }
+.coco-pin {
+  background: #2c5530;
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  border: 2px solid #fff;
+}
+.coco-pin > span { transform: rotate(45deg); font-weight: 700; font-size: 12px; }
+
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff !important; }
+  .break-inside-avoid { break-inside: avoid; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

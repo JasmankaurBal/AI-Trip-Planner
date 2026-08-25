@@ -1,0 +1,132 @@
+{
+  "theme_strategy": {
+    "mode": "light",
+    "rationale": "Travel apps require high readability outdoors under direct sunlight (Travel Mode). Light theme provides optimal legibility. Dark mode should be available but default to light.",
+    "aesthetic": "Organic & Earthy (Archetype 1) - avoiding neon AI-slop, focusing on calm, friendly, and adventurous tones."
+  },
+  "colors": {
+    "background": {
+      "primary": "#F9F7F3",
+      "secondary": "#EFECE5",
+      "travel_mode": "#FFFFFF"
+    },
+    "text": {
+      "primary": "#1A1C19",
+      "secondary": "#4B5563",
+      "inverse": "#FFFFFF"
+    },
+    "brand": {
+      "primary": "#2C5530",
+      "primary_hover": "#214124",
+      "accent_1": "#D47A57",
+      "accent_2": "#D19C4C",
+      "coco_ai": "#4A6E82"
+    },
+    "utility": {
+      "border": "#E5E1D8",
+      "success": "#34D399",
+      "warning": "#FBBF24",
+      "error": "#F87171"
+    },
+    "rules": {
+      "no_gradients": "Do not use full-screen or button gradients. Use flat, solid colors for a premium, grounded feel.",
+      "contrast": "Minimum 4.5:1 for standard text, 3:1 for large text. Strictly adhere to WCAG AA for outdoor readability."
+    }
+  },
+  "typography": {
+    "fonts": {
+      "headings": "Manrope",
+      "body": "DM Sans",
+      "mono": "JetBrains Mono"
+    },
+    "scale": {
+      "h1": "text-4xl md:text-5xl tracking-tight font-extrabold",
+      "h2": "text-2xl md:text-3xl tracking-tight font-bold",
+      "h3": "text-xl font-bold",
+      "body": "text-base leading-relaxed",
+      "small": "text-sm text-secondary font-medium tracking-wide uppercase"
+    },
+    "rules": {
+      "anti_default": "Never use Inter or Roboto for headings. Keep typography warm, legible, and slightly rounded (Manrope).",
+      "travel_mode_override": "In 'Travel Mode' toggle, increase body text size by 1 step (to text-lg) for glanceability."
+    }
+  },
+  "layouts_and_grids": {
+    "mobile_first": true,
+    "navigation": "Fixed bottom navigation bar on mobile (h-16, safe-area-padding, solid background with 1px top border). Desktop uses a sidebar or top navbar.",
+    "spacing_system": "Generous spacing. Use p-4 for dense mobile lists, but p-6 to p-8 for discovery cards.",
+    "bento_grid": "For Destination Discovery: Use asymmetrical grids (grid-cols-1 md:grid-cols-12, varying spans) to create visual tension and editorial feel.",
+    "containers": "Rounded-xl (12px) for cards, minimal shadows. Rely on 1px borders (#E5E1D8) to define edges rather than heavy drop shadows."
+  },
+  "components": {
+    "buttons": {
+      "primary": "Pill-shaped (rounded-full), solid Forest Green background, white text. Active state scales down slightly (-translate-y-0.5 is for hover, scale-95 for active).",
+      "secondary": "Outline with 1px border, transparent background, text color matches border."
+    },
+    "cards": {
+      "style": "Flat solid surfaces. No muddy shadows. Use border-border border.",
+      "hover": "Subtle -translate-y-1 with a soft, diffused shadow (shadow-md)."
+    },
+    "surfaces": {
+      "glassmorphism": "Avoid excessive glass. Use only for sticky map controls (bg-white/80 backdrop-blur-md border border-white/20) to maintain map visibility.",
+      "travel_mode": "Cards turn full-width, borders disappear in favor of hard divider lines to maximize screen real estate."
+    },
+    "map_ui": {
+      "library": "Leaflet (react-leaflet) with OpenStreetMap.",
+      "controls": "Floating UI controls over the map. Search results should add markers without aggressively moving the map center (viewport stability).",
+      "markers": "Use custom HTML markers (divIcons) styled with Tailwind, avoiding default blue Leaflet pins."
+    }
+  },
+  "visual_enhancers": {
+    "motion": "Fast, purposeful micro-interactions. 200ms ease-out transitions. No bouncy/springy animations. Itinerary drag-and-drop should feel snappy.",
+    "icons": "Phosphor Icons (@phosphor-icons/react) for a clean, consistent, and slightly playful look.",
+    "empty_states": "Use subtle ASCII art or minimal line illustrations instead of generic 'no data' vectors."
+  },
+  "image_urls": {
+    "hero_marketing": {
+      "url": "https://images.unsplash.com/reserve/91JuTaUSKaMh2yjB1C4A_IMG_9284.jpg?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwxfHxhZHZlbnR1cm91cyUyMHRyYXZlbGVyJTIwc3Vuc2V0fGVufDB8fHx8MTc4NzMxNTI1M3ww&ixlib=rb-4.1.0&q=85",
+      "description": "Silhouette of man walking along field leading to mountain at sunset.",
+      "category": "landing_page_hero"
+    },
+    "destination_discovery_1": {
+      "url": "https://images.unsplash.com/photo-1523248948644-586f1ab2a83e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxiZWF1dGlmdWwlMjBtaW5pbWFsaXN0JTIwbGFuZHNjYXBlfGVufDB8fHx8MTc4NzMxNTI1M3ww&ixlib=rb-4.1.0&q=85",
+      "description": "Minimalist mountain landscape over water.",
+      "category": "discovery_card"
+    },
+    "destination_discovery_2": {
+      "url": "https://images.pexels.com/photos/30024957/pexels-photo-30024957.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Solitary tree on a dry hill, calm isolation.",
+      "category": "discovery_card"
+    },
+    "local_discovery_cafe": {
+      "url": "https://images.pexels.com/photos/10940365/pexels-photo-10940365.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Warm and inviting coffeeshop filled with rustic wicker elements and plants.",
+      "category": "local_recommendations"
+    },
+    "coco_ai_avatar": {
+      "url": "https://images.unsplash.com/photo-1677080865283-26f94ed332f1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODF8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGZyaWVuZGx5JTIwZ2xvd2luZyUyMHNwaGVyZXxlbnwwfHx8fDE3ODczMTUyNjN8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Abstract friendly glowing blue/teal sphere representing COCO the AI.",
+      "category": "chat_avatar"
+    }
+  },
+  "instructions_to_main_agent": [
+    "Prioritize Progressive Disclosure: Do not show all trip details at once. Use accordions or tap-to-expand for itinerary days.",
+    "Implement 'Travel Mode': A specific UI state (toggleable) that simplifies the interface for on-the-go use. Larger fonts, higher contrast, fewer distractions, prominent 'What can I do right now?' CTA.",
+    "AI Integration: Treat COCO as a companion. Avoid generic 'AI Sparkles' everywhere. Chat UI should feel like a messaging app (e.g., iMessage/WhatsApp), not a corporate bot.",
+    "Map implementation: Use react-leaflet. Keep the map stable. Do not auto-fly-to coordinates aggressively unless explicitly requested by the user.",
+    "Do not use transparent dropdowns or transparent sticky headers without backdrop blur and an explicit background color (e.g., bg-white/90).",
+    "All interactive elements MUST have data-testid attributes (e.g., data-testid='generate-trip-button').",
+    "Use pure HTML/Tailwind for the marketing landing page (no Shadcn wrappers), but use Shadcn for the app dashboard (forms, inputs, dropdowns)."
+  ],
+  "accessibility": {
+    "focus_states": "focus:ring-2 focus:ring-brand-primary focus:ring-offset-2",
+    "motion": "Respect prefers-reduced-motion media query for all transitions.",
+    "contrast": "Ensure APCA/WCAG AA compliance. Use text-shadow over images if necessary."
+  },
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Do not use universal transitions (transition: all). Target specific properties like transition-colors or transition-transform.",
+    "Never apply text-align: center globally to the app container.",
+    "Avoid AI slop: No AI-bot emojis, no meaningless gradient blobs, no oversized text everywhere.",
+    "Ensure all components from src/components/ui are properly configured and customized to match the brand identity (remove default Vercel/Stripe look)."
+  ]
+}

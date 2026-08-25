@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    environment:
+      MONGO_URL: "mongodb://mongo:27017"
+      DB_NAME: "coco_database"
+      JWT_SECRET: "${JWT_SECRET:?Set JWT_SECRET in your shell or .env}"
+      GOOGLE_API_KEY: "${GOOGLE_API_KEY}"
+      AI_MODEL: "gemini-3-flash-preview"
+      FRONTEND_URL: "http://localhost:3000"
+      ALLOWED_ORIGINS: "http://localhost:3000"
+      COOKIE_SECURE: "false"
+    ports:
+      - "8001:8001"
+
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    environment:
+      REACT_APP_BACKEND_URL: "http://localhost:8001"
+    ports:
+      - "3000:3000"
+
+volumes:
+  mongo_data:

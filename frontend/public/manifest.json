@@ -1,0 +1,11 @@
+{
+  "short_name": "COCO",
+  "name": "COCO — AI Trip Planner",
+  "icons": [
+    { "src": "logofavicon.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#2C5530",
+  "background_color": "#F9F7F3"
+}

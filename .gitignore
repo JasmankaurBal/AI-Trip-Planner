@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+.ruff_cache/
+
+# Environment - NEVER commit real secrets
+.env
+*.env
+!.env.example
+
+# Build output
+frontend/build/
+frontend/.eslintcache
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+credentials.json
+*.pem
+*.key
+.credentials
+
+# Local configuration and test artifacts
+.gitconfig
+.pytest_cache/
+test_reports/
+auth_testing.md
+memory/test_credentials.md
+server/
+
+# Keep safe environment templates visible
+!.env.example
