@@ -104,21 +104,44 @@ async def login(payload: LoginRequest, request: Request, response: Response, db:
 
 
 @router.get("/google/start")
-async def google_start(response: Response):
+async def google_start():
     if not all((settings.GOOGLE_CLIENT_ID, settings.GOOGLE_REDIRECT_URI)):
-        raise HTTPException(status_code=503, detail="Google sign-in is not configured")
+        raise HTTPException(
+            status_code=503,
+            detail="Google sign-in is not configured"
+        )
+
     state = secrets.token_urlsafe(32)
-    response.set_cookie(
-        "oauth_state", state, httponly=True, secure=settings.COOKIE_SECURE,
-        samesite="lax", domain=settings.COOKIE_DOMAIN, max_age=600, path="/",
-    )
+
     params = urlencode({
-        "client_id": settings.GOOGLE_CLIENT_ID, "redirect_uri": settings.GOOGLE_REDIRECT_URI,
-        "response_type": "code", "scope": "openid email profile", "state": state,
-        "access_type": "offline", "prompt": "select_account",
+        "client_id": settings.GOOGLE_CLIENT_ID,
+        "redirect_uri": settings.GOOGLE_REDIRECT_URI,
+        "response_type": "code",
+        "scope": "openid email profile",
+        "state": state,
+        "access_type": "offline",
+        "prompt": "select_account",
     })
+
     from fastapi.responses import RedirectResponse
-    return RedirectResponse(f"https://accounts.google.com/o/oauth2/v2/auth?{params}")
+
+    redirect = RedirectResponse(
+        f"https://accounts.google.com/o/oauth2/v2/auth?{params}",
+        status_code=307,
+    )
+
+    redirect.set_cookie(
+        "oauth_state",
+        state,
+        httponly=True,
+        secure=settings.COOKIE_SECURE,
+        samesite=settings.COOKIE_SAMESITE,
+        domain=settings.COOKIE_DOMAIN,
+        max_age=600,
+        path="/",
+    )
+
+    return redirect
 
 
 @router.get("/google/callback")
